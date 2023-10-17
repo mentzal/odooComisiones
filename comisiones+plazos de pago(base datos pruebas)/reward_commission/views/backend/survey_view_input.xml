@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="survey_user_input_view_inherit_tree" model="ir.ui.view">
+        <field name="name">survey.user.input.view.etech.inherit.tree</field>
+        <field name="model">survey.user_input</field>
+        <field name="inherit_id" ref="survey.survey_user_input_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='create_date']" position="after">
+                <field name="date_completed"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

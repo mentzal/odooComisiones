@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="payment_tokens_list" inherit_id="payment.payment_tokens_list">
+        <xpath expr="//div[hasclass('card')]" position="before">
+            <t t-if="request.website.is_public_user()">
+                <t t-if="website.name != 'Genushair'">
+            <!-- for haidresser, ???don't need choose a hairdresser -->
+                <h5 class=" mt-3">hairdresser shop</h5>
+                <t t-if="hairdressers">
+
+                    <div class="card etech-card-hairdressers mb-3">
+                        <div class="card-body">
+                            <select class="form" name="hairdresser" id="hairdresser" required="true">
+                                <option value="" disabled="true">Please Select a hairdresser near your address</option>
+                                <t t-foreach="hairdressers" t-as="hairdresser">
+                                    <option t-att-value="hairdresser['hairdresser'].id"><t t-esc="hairdresser['hairdresser'].name"/>
+                                        //
+                                        <small><t t-esc="hairdresser['hairdresser'].street"/>
+                                            <t t-esc="hairdresser['hairdresser'].zip"/>
+                                            <t t-esc="hairdresser['hairdresser'].city"/></small>
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+                </t>
+            
+                <t t-else="">
+                    <div class="card-body">
+                    <p>
+                        No haidresser found around your provided address!
+                    </p>
+                    </div>
+                </t>
+                </t>
+                </t>
+                
+                <t t-if="website.name == 'Easy Tech Cosmetics'">
+
+                <div class="card etech-card-hairdressers mb-3">
+                        <div class="card-body">
+                        
+              <!-- <label><input type="checkbox" id="cbox1" value="True" name="pronto_pago">Pronto Pago 3%</input></label> -->
+                <h4>Plazos de pago:</h4>
+                <br></br>
+
+                <select class="form" name="plazos" id="pago" required="true">
+                                <option value="" disabled="true">Selecciona plazo de pago</option>
+                                <t t-foreach="pagos" t-as="plazos">
+                                    <option t-att-value="plazos['plazo'].id"><t t-esc="plazos['plazo'].name"/>
+                                      
+                                    </option>
+                                </t>
+                            </select>  
+
+
+               </div>
+                    </div>
+                    <br></br>
+                <div class="card etech-card-hairdressers mb-3">
+                <div class="card-body">
+
+
+                <p>Importe adquirido para utilizar en merchandising</p>
+                <t t-esc="merchan"/><label> € </label>
+
+               
+
+
+                <br></br>
+                <textarea id="merchan" name="texto-merchan" placeholder="Indícanos tu merchandising..." rows="3" cols="60"></textarea>
+
+
+                </div>
+                </div>
+            </t>
+            
+        </xpath>
+    </template>
+
+
+</odoo>

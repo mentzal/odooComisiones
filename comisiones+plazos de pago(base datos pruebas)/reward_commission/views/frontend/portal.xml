@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="commission_entry">
+        <a href="#" t-att-title="title" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+            <t t-esc="title"/>
+            <t t-esc="partner_id"/>
+            <span class="badge badge-success badge-pill" t-esc="total" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+        </a>
+    </template>
+
+    <template id="portal_my_home_commission" inherit_id="portal.portal_my_home" priority="1">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="user_id.total_commission > 0" t-call="reward_commission.commission_entry">
+                <t t-set="title">Total Commission</t>
+                <t t-set="url" t-value="'#'"/>
+                <t t-set="total" t-value="user_id.total_commission"/>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.commission.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//label[@name='address_name']" position="before">
+                <field name="partner_type"/>
+                <field name="distributor_id" attrs="{'invisible':  [('partner_type', '!=', 'hairdresser')]}"/>
+                <field name="certification_commission" attrs="{'invisible':  [('partner_type', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_view_total_commission_buttons" model="ir.ui.view">
+        <field name="name">res.partner.view.total.commission.buttons</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="priority" eval="12"/>
+        <field name="groups_id" eval="[(4, ref('account.group_account_invoice'))]"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" icon="fa-usd" context="{'default_partner_id': active_id}">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="total_commission" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                        </span> 
+                        <span class="o_stat_text">Total Com.</span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

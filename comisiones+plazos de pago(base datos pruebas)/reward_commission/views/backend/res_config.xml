@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.reward.commission</field>
+        <field name="model">res.config.settings</field>
+
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//h2[hasclass('mt32')]" position="before">
+
+                <h2>Commission</h2>
+
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-12 o_setting_box">
+
+                        <div class="o_setting_right_pane">
+                            <div>
+                                <label for="hair_dresser_commission"/>
+                                <field name="hair_dresser_commission"/>
+                            </div>
+                            <div>
+                                <label for="distributor_to_end_user_commission"/>
+                                <field name="distributor_to_end_user_commission"/>
+                            </div>
+                            <div>
+                                <label for="distributor_to_hairdresser_commission"/>
+                                <field name="distributor_to_hairdresser_commission"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

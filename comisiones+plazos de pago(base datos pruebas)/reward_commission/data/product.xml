@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="product_commission_product_template" model="product.product">
+            <field name="name">Commission</field>
+            <field name="website_sequence">9980</field>
+            <field name="is_published" eval="True"/>
+            <field name="sale_ok" eval="False"/>
+            <field name="type">service</field>
+            <field name="description_sale">Commission product</field>
+        </record>
+
+</odoo>
